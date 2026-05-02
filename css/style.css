@@ -1,0 +1,37 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f4f6f9; color: #333; }
+
+/* 导航栏 */
+.navbar { background: #1a2639; color: #fff; position: sticky; top: 0; z-index: 100; }
+.nav-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; flex-wrap: wrap; }
+.nav-brand { font-size: 1.4rem; font-weight: bold; color: #fff; text-decoration: none; }
+.nav-menu { list-style: none; display: flex; gap: 1.5rem; }
+.nav-menu a { color: #ccc; text-decoration: none; transition: 0.3s; }
+.nav-menu a:hover { color: #fff; }
+.lang-btn { background: #3e5c76; color: #fff; border: none; padding: 0.4rem 1rem; border-radius: 5px; cursor: pointer; }
+
+/* 头部 */
+.hero { text-align: center; padding: 3rem 1rem; background: #fff; }
+.avatar { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid #1a2639; margin-bottom: 1rem; }
+.hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+.school, .period, .major { color: #666; margin-bottom: 0.3rem; }
+
+/* 通用 section */
+.section { max-width: 1000px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.section h2 { border-left: 4px solid #1a2639; padding-left: 1rem; margin-bottom: 1.5rem; }
+
+/* 卡片 */
+.card { background: #f9fafc; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; color: #1a2639; }
+.card p, .card li { margin-bottom: 0.4rem; }
+.files, .cert-link { display: flex; gap: 1rem; margin-top: 0.8rem; flex-wrap: wrap; }
+.files a, .cert-link { background: #e9ecef; padding: 0.3rem 0.8rem; border-radius: 5px; text-decoration: none; color: #1a2639; font-size: 0.9rem; }
+.files a:hover, .cert-link:hover { background: #d0d6dc; }
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+footer { text-align: center; padding: 2rem; color: #999; }
+
+@media (max-width: 700px) {
+    .nav-menu { flex-direction: column; gap: 0.5rem; width: 100%; }
+    .info-grid { grid-template-columns: 1fr; }
+}
