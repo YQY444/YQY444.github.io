@@ -1,240 +1,727 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="siteTitle">杨琪勇 - 个人主页</title>
+    <title data-i18n="siteTitle">Kylan YANG - 个人主页</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-brand" data-i18n="nav.brand">杨琪勇</a>
-            <ul class="nav-menu">
-                <li><a href="#basic" data-i18n="nav.basic">基本信息</a></li>
-                <li><a href="#papers" data-i18n="nav.papers">学术经历</a></li>
-                <li><a href="#lang" data-i18n="nav.lang">外语&荣誉</a></li>
-                <li><a href="#awards" data-i18n="nav.awards">获奖荣誉</a></li>
-                <li><a href="#intern" data-i18n="nav.intern">实习&交换</a></li>
-            </ul>
-            <button id="lang-switch" class="lang-btn">English</button>
+    <!-- 顶部个人信息栏（固定显示） -->
+    <header class="profile-header">
+        <div class="header-container">
+            <div class="profile-info">
+                <img src="pic/大头照.jpg" alt="头像" class="profile-avatar" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22><rect fill=%22%23ddd%22 width=%2280%22 height=%2280%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2220%22>KY</text></svg>'">
+                <div class="profile-details">
+                    <h1 class="profile-name" data-i18n="name">杨琪勇</h1>
+                    <p class="profile-school" data-i18n="school">城市：上海</p>
+                        <div class="profile-contact">
+                            <span class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <span>qiyongyang{at}mail.dhu.edu.cn</span>
+                            </span>
+                            <span class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <span>kkl6782024{at}163.com</span>
+                            </span>
+                        </div>
+                    </div>
+            </div>
+            <div class="header-controls">
+                <button id="theme-switch" class="control-btn" title="切换主题">
+                    <svg class="theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button id="lang-switch" class="control-btn" data-i18n="langButton">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 标签导航栏 -->
+    <nav class="tab-navigation">
+        <div class="tab-container">
+            <button class="tab-btn active" data-tab="overview" data-i18n="tab.overview">概览</button>
+            <button class="tab-btn" data-tab="research" data-i18n="tab.research">学术经历</button>
+            <button class="tab-btn" data-tab="courses" data-i18n="tab.courses">课程图谱</button>
+            <button class="tab-btn" data-tab="awards" data-i18n="tab.awards">获奖荣誉</button>
+            <button class="tab-btn" data-tab="experience" data-i18n="tab.experience">实习交换</button>
         </div>
     </nav>
 
-    <!-- 主页头部 -->
-    <header id="home" class="hero">
-        <img src="info/image1.jpg" alt="头像" class="avatar">
-        <h1 data-i18n="name">杨琪勇</h1>
-    </header>
+    <!-- 内容区域 -->
+    <main class="content-area">
+        <!-- 概览标签页 -->
+        <section id="overview" class="tab-content active">
+            <div class="content-container">
+                <div class="info-card">
+                    <h2 data-i18n="overview.basicInfo">基础信息</h2>
+                    <div class="education-info">
+                        <div class="edu-item">
+                            <span class="edu-label" data-i18n="label.university">本科院校：</span>
+                            <span class="edu-value" data-i18n="university">东华大学（211 上海）</span>
+                            <span class="edu-value-en" data-i18n="universityEn">DONGHUA UNIVERSITY (211 project SH)</span>
+                        </div>
+                        <div class="edu-item">
+                            <span class="edu-label" data-i18n="label.major">专业：</span>
+                            <div class="major-list">
+                                <span class="major-item">2023-2024 <span data-i18n="major1">行政管理</span></span>
+                                <span class="major-item">2024-2027 <span data-i18n="major2">信息管理与信息系统（IMIS）</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- 板块1：基础信息 -->
-    <section id="basic" class="section">
-        <h2 data-i18n="basic.title">基础信息</h2>
-        <div class="info-grid">
-            <div><strong data-i18n="label.name">姓名：</strong><span data-i18n="name">杨琪勇</span></div>
-            <div><strong data-i18n="label.school">学校：</strong><span data-i18n="school">东华大学</span></div>
-            <div><strong data-i18n="label.period">时间：</strong><span data-i18n="period">2023 - 2027</span></div>
-            <div><strong data-i18n="label.major">专业：</strong><span data-i18n="major">信息管理与信息系统</span></div>
-            <div><strong data-i18n="label.email">邮箱：</strong>qiyongyang[at]mail.dhu.edu.cn；kkl6782024[at]163.com</div>
-        </div>
-    </section>
+                <div class="info-card">
+                    <h2 data-i18n="overview.language">语言能力</h2>
+                    <div class="language-grid">
+                        <div class="language-item">
+                            <h3>CET-4</h3>
+                            <p class="score">591 分</p>
+                            <a href="info/language/CET4_202406_310061241102612_1.pdf" target="_blank" class="cert-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                <span data-i18n="viewCert">查看证书</span>
+                            </a>
+                        </div>
+                        <div class="language-item">
+                            <h3>CET-6</h3>
+                            <p class="score">563 分</p>
+                            <a href="info/language/CET6_202412_310061242206523_1.pdf" target="_blank" class="cert-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                <span data-i18n="viewCert">查看证书</span>
+                            </a>
+                        </div>
+                        <div class="language-item">
+                            <h3>ETIC</h3>
+                            <div class="etic-certs">
+                                <a href="info/honor_certificate/ETIC 中级.pdf" target="_blank" class="cert-link-small">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    <span data-i18n="eticIntermediate">中级良好证书</span>
+                                </a>
+                                <span class="cert-divider">|</span>
+                                <a href="info/honor_certificate/ETIC 初级.pdf" target="_blank" class="cert-link-small">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    <span data-i18n="eticElementary">初级优秀证书</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- 板块2：学术经历 -->
-    <section id="papers" class="section">
-        <h2 data-i18n="papers.title">学术经历</h2>
-        
-        <!-- 论文1 -->
-        <div class="card">
-            <h3 data-i18n="paper1.title">Assessing the Sustainable Development of the Tourism Industry Based on Fuzzy AHP and Grey Relational TOPSIS</h3>
-            <p><span data-i18n="label.journal">期刊：</span>Sustainability (MDPI, SCI/SSCI, JCR Q2)</p>
-            <p><span data-i18n="label.date">发表时间：</span>2025.10</p>
-            <p><a href="https://www.mdpi.com/2071-1050/17/21/9799" target="_blank" data-i18n="label.link">论文链接</a></p>
-            <p class="abstract" data-i18n="paper1.abstract">针对旅游可持续发展评价中指标模糊性、权重分配主观性问题，构建涵盖经济、社会、环境、文化4个一级维度、13个二级指标的评价体系（含7个正向指标、6个负向指标），区分旅游发展的效益与风险。方法上，创新融合模糊层次分析法（FAHP）与灰色关联TOPSIS（GR-TOPSIS），通过三角模糊判断矩阵与一致性检验确定指标权重，整合欧氏距离与灰色关联度构建混合贴近度指数，提升模糊数据处理能力。以7个典型旅游区域为案例验证，得出旅游收入贡献权重最高、游客文化尊重度权重最低的关键结论；丽江清水可持续发展水平最优。通过敏感性分析，模型结论与熵权TOPSIS验证结果一致性显著。</p>
-            <div class="files">
-                <a href="info/Acceptance-Certificate-sustainability-3941708.pdf" target="_blank">📄 Acceptance Certificate</a>
-                <a href="info/Article_Banner_MDPI_sustainability-17-09799.pdf" target="_blank">📄 Article Banner</a>
+                <div class="info-card">
+                    <h2 data-i18n="overview.skills">核心技能</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="4" data-i18n="stat.research">0</div>
+                            <div class="stat-label" data-i18n="stat.researchLabel">科研经历</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="7" data-i18n="stat.awards">0</div>
+                            <div class="stat-label" data-i18n="stat.awardsLabel">竞赛奖项</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="6" data-i18n="stat.certs">0</div>
+                            <div class="stat-label" data-i18n="stat.certsLabel">专业证书</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="91.7" data-suffix="" data-i18n="stat.gpa">0</div>
+                            <div class="stat-label" data-i18n="stat.gpaLabel">当前 GPA</div>
+                        </div>
+                    </div>
+                    <div class="word-cloud" id="wordCloud"></div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 论文2 -->
-        <div class="card">
-            <h3 data-i18n="paper2.title">Sustainable Evaluation Framework for Urban Creative Space: Exploring a Better Way for Urban Development</h3>
-            <p><span data-i18n="label.journal">期刊：</span>Sustainability (MDPI, SCI/SSCI, JCR Q2)</p>
-            <p><span data-i18n="label.date">发表时间：</span>2026.03</p>
-            <p><a href="https://www.mdpi.com/2071-1050/18/6/3083" target="_blank" data-i18n="label.link">论文链接</a></p>
-            <p class="abstract" data-i18n="paper2.abstract">聚焦全球数字化与文化多样性背景下城市创意空间评价缺口，构建包含AIGC技术融合、文化遗产保护、数字文化产业经济效益、生态协同与社会包容、治理政策支持的5个一级维度、20个二级指标的跨文化评价框架。采用直觉模糊层次分析法（IFAHP）确定指标权重，结合TOPSIS对伦敦、上海等5个国际城市进行排名，伦敦综合可持续性居首（贴近度0.6623），上海位列第二（贴近度0.5282）。通过±20%权重扰动验证模型稳健性，70%的场景秩相关系数≥1.0。</p>
-            <div class="files">
-                <a href="info/Article_Banner_MDPI_sustainability-18-03083.pdf" target="_blank">📄 Article Banner</a>
+        <!-- 学术经历标签页 -->
+        <section id="research" class="tab-content">
+            <div class="content-container">
+                <h2 class="section-title" data-i18n="research.title">学术经历</h2>
+                
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <h3 data-i18n="paper1.title">Assessing the Sustainable Development of the Tourism Industry Based on Fuzzy AHP and Grey Relational TOPSIS</h3>
+                        <span class="paper-badge published" data-i18n="paper.published">已发表</span>
+                    </div>
+                    <p class="paper-journal">Sustainability (MDPI, SCI/SSCI, JCR Q2, IF=3.9)</p>
+                    <div class="paper-timeline">
+                        <span>Received: 2025.10.06</span>
+                        <span>→</span>
+                        <span>Revised: 2025.10.24</span>
+                        <span>→</span>
+                        <span>Accepted: 2025.10.30</span>
+                        <span>→</span>
+                        <span>Published: 2025.11.03</span>
+                    </div>
+                    <p class="paper-abstract" data-i18n="paper1.abstract">针对旅游可持续发展评价中指标模糊性、权重分配主观性问题，构建涵盖经济、社会、环境、文化 4 个一级维度、13 个二级指标的评价体系（含 7 个正向指标、6 个负向指标），区分旅游发展的效益与风险。方法上，创新融合模糊层次分析法（FAHP）与灰色关联 TOPSIS（GR-TOPSIS），通过三角模糊判断矩阵与一致性检验确定指标权重，整合欧氏距离与灰色关联度构建混合贴近度指数，提升模糊数据处理能力。以 7 个典型旅游区域为案例进行验证，得出结论：旅游收入贡献权重最高（<strong>0.189</strong>）、游客文化尊重度权重最低（<strong>0.015</strong>）的关键结论；丽江清水（生态文化型）可持续发展水平最优（混合贴近度 <strong>0.693</strong>）。通过敏感性分析，模型结论与熵权 TOPSIS 验证结果一致性显著，为区域旅游决策提供科学支撑。</p>
+                    <div class="paper-links">
+                        <a href="https://www.mdpi.com/2071-1050/17/21/9799" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            <span data-i18n="paper.link">论文链接</span>
+                        </a>
+                        <a href="info/article_and_proof/Acceptance-Certificate-sustainability-3941708.pdf" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="paper.acceptance">接收函</span>
+                        </a>
+                        <a href="info/article_and_proof/sustainability-17-09799-v2.pdf" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="paper.article">论文全文</span>
+                        </a>
+                        <a href="pic/Article_Banner_MDPI_sustainability-17-09799_01.png" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="paper.banner">论文 Banner</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <h3 data-i18n="paper2.title">Sustainable Evaluation Framework for Urban Creative Space: Exploring a Better Way for Urban Development</h3>
+                        <span class="paper-badge published" data-i18n="paper.published">已发表</span>
+                    </div>
+                    <p class="paper-journal">Sustainability (MDPI, SCI/SSCI, JCR Q2, IF=3.9)</p>
+                    <div class="paper-timeline">
+                        <span>Received: 2026.01.20</span>
+                        <span>→</span>
+                        <span>Revised: 2026.03.12</span>
+                        <span>→</span>
+                        <span>Accepted: 2026.03.18</span>
+                        <span>→</span>
+                        <span>Published: 2026.03.20</span>
+                    </div>
+                    <p class="paper-abstract" data-i18n="paper2.abstract">聚焦全球数字化与文化多样性背景下城市创意空间评价缺口，构建包含 AIGC 技术融合、文化遗产保护、数字文化产业经济效益、生态协同与社会包容、治理政策支持的 5 个一级维度、20 个二级指标的跨文化评价框架。采用直觉模糊层次分析法（IFAHP）确定指标权重，结合 TOPSIS 对伦敦、上海等 5 个国际城市进行排名，伦敦综合可持续性居首（贴近度 <strong>0.6623</strong>），上海位列第二（贴近度 <strong>0.5282</strong>）。模型稳健性分析方面，通过±20% 权重扰动验证模型稳健性，<strong>70%</strong> 的场景秩相关系数≥1.0，验证了模型稳定性。</p>
+                    <div class="paper-links">
+                        <a href="https://www.mdpi.com/2071-1050/18/6/3083" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            <span data-i18n="paper.link">论文链接</span>
+                        </a>
+                        <a href="info/article_and_proof/sustainability-18-03083.pdf" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="paper.article">论文全文</span>
+                        </a>
+                        <a href="pic/Article_Banner_MDPI_sustainability-18-03083_01.png" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="paper.banner">论文 Banner</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <h3 data-i18n="paper3.title">Supply and demand prediction analysis of urban gas energy in China: A new method using WOA–Grey Markov</h3>
+                        <span class="paper-badge published" data-i18n="paper.published">已发表</span>
+                    </div>
+                    <p class="paper-journal">Energy Sources, Part B (Taylor & Francis, SCI, JCR Q3, IF=2.9)</p>
+                    <div class="paper-timeline">
+                        <span>Received: 2026.02.05</span>
+                        <span>→</span>
+                        <span>Revised: 2026.05.06</span>
+                        <span>→</span>
+                        <span>Accepted: 2026.05.15</span>
+                        <span>→</span>
+                        <span>Published: 2026.05.17</span>
+                    </div>
+                    <p class="paper-abstract" data-i18n="paper3.abstract">运用数学建模方法开展城市不可再生能源供需量预测。基于传统灰色模型 GM(1,1)，加入马尔可夫链进行预测残差修正，并引入鲸群算法（WOA）优化马尔可夫链参数。覆盖天然气、人工煤气、液化石油气 3 类能源，处理 2013-2023 年历史数据并预判 2024-2026 年趋势。设置 10 次取平均值计算，通过留一法（LOOVC）对模型进行检验。结果显示 WOA 的引入，相较于传统灰色马尔可夫预测，六组数据预测误差 RMSE 下降 <strong>3.6%-9.9%</strong>，同时其结果也略优于 PSO，说明 WOA 在这一种情景下的预测准确性更高。</p>
+                    <div class="paper-links">
+                        <a href="https://doi.org/10.1080/15567249.2026.2677044" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            <span>DOI</span>
+                        </a>
+                        <a href="info/article_and_proof/ESPB录用函邮件.pdf" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="paper.acceptance">接收函</span>
+                        </a>
+                        <a href="info/article_and_proof/Supply and demand prediction analysis of urban gas energy in China  A new method using WOA Grey Markov(1).pdf" target="_blank" class="paper-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="paper.article">论文全文</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <h3 data-i18n="paper4.title">Research on Accurate Prediction of Small-Sample Nonlinear Sequences in Multiple Scenarios</h3>
+                        <span class="paper-badge under-review" data-i18n="paper.underReview">在审</span>
+                    </div>
+                    <p class="paper-journal">Journal of Forecasting (Wiley, SSCI, JCR Q1, IF=3.4)</p>
+                    <div class="paper-timeline">
+                        <span>Submitted: 2026.02</span>
+                        <span>→</span>
+                        <span data-i18n="paper4.status">初审中（外审）</span>
+                    </div>
+                    <p class="paper-abstract" data-i18n="paper4.abstract">基于 GM(1,N)+ 马尔可夫链 + 改进万有引力算法，解决小样本非线性冷链物流序列预测难题。模型 MAPE 仅 <strong>10.23%</strong>（越低越好），较传统 GM(1,N)（MAPE <strong>54.65%</strong>）显著降低，预测 2024 年运输量达 <strong>6.29 亿吨</strong>，年增长率稳定在 <strong>22%-23%</strong>。</p>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 论文3 -->
-        <div class="card">
-            <h3 data-i18n="paper3.title">Supply and Demand Prediction Analysis of Urban Gas Energy in China: A New Method Using GM-Markov-WOA</h3>
-            <p><span data-i18n="label.journal">期刊：</span>Energy Sources, Part B (Taylor & Francis, SCI, JCR Q3)</p>
-            <p><span data-i18n="label.date">投稿时间：</span>2026.01（<span data-i18n="paper3.status">返修后重新提交</span>）</p>
-            <p><span data-i18n="label.link">链接：</span><span data-i18n="none">无</span></p>
-            <p class="abstract" data-i18n="paper3.abstract">运用数学建模方法开展城市不可再生能源供需量预测。基于传统灰色模型GM(1,1)，加入马尔可夫链进行预测残差修正，并引入鲸群算法（WOA）优化马尔可夫链参数。覆盖天然气、人工煤气、液化石油气3类能源，处理2013-2023年历史数据并预判2024-2026年趋势。设置10次取平均值，通过留一法检验，结果显示WOA的引入使六组数据预测误差RMSE下降3.6%-9.9%，且结果略优于PSO。</p>
-        </div>
-
-        <!-- 论文4 -->
-        <div class="card">
-            <h3 data-i18n="paper4.title">Research on Accurate Prediction of Small-Sample Nonlinear Sequences in Multiple Scenarios（农产品冷链物流方向）</h3>
-            <p><span data-i18n="label.journal">期刊：</span>Journal of Forecasting (Wiley, SSCI, JCR Q1)</p>
-            <p><span data-i18n="label.date">状态：</span>2026.02（<span data-i18n="paper4.status">初审中，外审</span>）</p>
-            <p><span data-i18n="label.link">链接：</span><span data-i18n="none">无</span></p>
-            <p class="abstract" data-i18n="paper4.abstract">基于GM(1,N)+马尔可夫链+改进万有引力算法（IGSA），解决小样本非线性冷链物流序列预测难题。聚焦农产品冷链物流，选取第一产业增加值、第三产业从业人数等5个关键指标，构建GM(1,N)模型。结果MAPE仅10.23%，较传统GM(1,N)的54.65%大幅降低，预测2024年运输量达6.29亿吨，年增长率稳定在22%-23%。</p>
-        </div>
-    </section>
-
-    <!-- 板块3：外语水平与荣誉证明 -->
-    <section id="lang" class="section">
-        <h2 data-i18n="lang.title">外语水平与荣誉证明</h2>
-        
-        <!-- 外语成绩 -->
-        <div class="card">
-            <h3 data-i18n="lang.cet">大学英语</h3>
-            <p>CET-4: 591 <a href="info/CET4_202406_310061241102612_1.pdf" target="_blank">📄 CET-4</a></p>
-            <p>CET-6: 563 <a href="info/CET6_202412_310061242206523_1.pdf" target="_blank">📄 CET-6</a></p>
-        </div>
-        <div class="card">
-            <h3 data-i18n="lang.etc">国才考试</h3>
-            <p><span data-i18n="lang.etc.primary">初级优秀</span> <a href="info/成绩单 初级.pdf" target="_blank">📄</a></p>
-            <p><span data-i18n="lang.etc.mid">中级良好</span> <a href="info/成绩单 中级.pdf" target="_blank">📄</a></p>
-        </div>
-
-        <!-- 相关证书 -->
-        <div class="card">
-            <h3 data-i18n="lang.certs">相关证书</h3>
-            <ul>
-                <li>IBM Enterprise Data Science <a href="info/IBM_enterptise data science.pdf" target="_blank">📄</a></li>
-                <li>IBM Machine Learning <a href="info/IBM_machine learning.pdf" target="_blank">📄</a></li>
-                <li><span data-i18n="lang.tencent1">腾讯产品经理训练营（入门）</span> <a href="info/腾讯产品经理训练营证书-入门课程.pdf" target="_blank">📄</a></li>
-                <li><span data-i18n="lang.tencent2">腾讯产品经理训练营（进阶）</span> <a href="info/腾讯产品经理训练营证书-进阶版课程.pdf" target="_blank">📄</a></li>
-                <li><span data-i18n="lang.fullstack">鼎捷校园全栈开发工程师</span> <a href="info/校园全栈开发工程师.pdf" target="_blank">📄</a></li>
-            </ul>
-        </div>
-
-        <!-- 荣誉称号 -->
-        <div class="card">
-            <h3 data-i18n="lang.honors">荣誉称号</h3>
-            <p><span data-i18n="lang.honor1">2023-2024 东华大学校一等奖学金</span> <a href="info/校一等奖学金.jpg" target="_blank">🖼️</a></p>
-            <p><span data-i18n="lang.honor2">2024-2025 东华大学天骥一等奖学金</span> <a href="info/2025社会奖一等.jpg" target="_blank">🖼️</a></p>
-        </div>
-    </section>
-
-    <!-- 板块4：获奖荣誉 -->
-    <section id="awards" class="section">
-        <h2 data-i18n="awards.title">获奖荣誉</h2>
-
-        <!-- 竞赛1 -->
-        <div class="card">
-            <h3 data-i18n="award1.title">2025年全国大学生数学竞赛（CMC）</h3>
-            <p><span data-i18n="label.prize">奖项：</span><span data-i18n="award1.prize">非数学类B组省一等奖</span></p>
-            <p>2025.11</p>
-            <p class="desc" data-i18n="award1.desc">数学学科基础竞赛，经过东华大学初赛（二等奖）</p>
-            <div class="files">
-                <a href="info/东华大学数学竞赛二等奖.pdf" target="_blank">School Certificate</a>
-                <a href="info/CMC2025.pdf" target="_blank">Provincial Certificate</a>
-                <a href="info/上海赛区第十七届全国大学生数学竞赛获奖名单.pdf" target="_blank">Winner List</a>
+        <!-- 课程图谱标签页 -->
+        <section id="courses" class="tab-content">
+            <div class="content-container">
+                <h2 class="section-title" data-i18n="courses.title">课程知识图谱</h2>
+                <div class="courses-container" id="courses-map-container">
+                    <div id="courses-loading" class="loading-indicator">
+                        <div class="spinner"></div>
+                        <p data-i18n="courses.loading">正在加载课程图谱...</p>
+                    </div>
+                    <div id="knowledge-map"></div>
+                    <div class="tooltip" id="tooltip"></div>
+                    <div class="legend" id="legend"></div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 竞赛2 -->
-        <div class="card">
-            <h3 data-i18n="award2.title">2025年全国大学生英语竞赛（NECCS）</h3>
-            <p><span data-i18n="label.prize">奖项：</span><span data-i18n="award2.prize">全国二等奖</span></p>
-            <p>2025.04</p>
-            <p class="desc" data-i18n="award2.desc">英语学科基础竞赛</p>
-            <div class="files">
-                <a href="info/2025大英赛NECCS 二等奖.pdf" target="_blank">Certificate</a>
+        <!-- 获奖荣誉标签页 -->
+        <section id="awards" class="tab-content">
+            <div class="content-container">
+                <h2 class="section-title" data-i18n="awards.title">获奖荣誉</h2>
+                
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="award1.title">2025 年全国大学生数学竞赛（CMC）</h3>
+                        <span class="award-badge first-prize" data-i18n="award1.prize">省一等奖</span>
+                    </div>
+                    <p class="award-date">2025.11</p>
+                    <p class="award-desc" data-i18n="award1.desc">数学学科基础竞赛，经过东华大学初赛（二等奖）、上海赛区复赛选拔，最终获得省级一等奖。竞赛考察数学分析、高等代数、解析几何等基础数学知识的综合应用能力。</p>
+                    <div class="award-files">
+                        <a href="info/competition/东华大学数学竞赛二等奖.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.initial">初赛二等奖</span>
+                        </a>
+                        <a href="info/competition/数学竞赛省一.jpg" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <span data-i18n="award.final">省级一等奖</span>
+                        </a>
+                        <a href="info/competition/数学竞赛国一.jpg" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <span data-i18n="award.national">国家级一等奖</span>
+                        </a>
+                        <a href="info/competition/上海赛区第十七届全国大学生数学竞赛获奖名单.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.list">获奖名单</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="award2.title">2025 年全国大学生英语竞赛（NECCS）</h3>
+                        <span class="award-badge second-prize" data-i18n="award2.prize">全国二等奖</span>
+                    </div>
+                    <p class="award-date">2025.04</p>
+                    <p class="award-desc" data-i18n="award2.desc">英语学科基础竞赛，考察英语听力、阅读、写作、翻译等综合语言能力。</p>
+                    <div class="award-files">
+                        <a href="info/competition/2025大英赛二等奖.png" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <span data-i18n="award.certificate">证书</span>
+                        </a>
+                        <a href="info/competition/2025NECCS指导教师证书-二等奖.png" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.teacherCert">指导教师证书</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="award3.title">2025 年美国大学生数学建模竞赛（MCM/ICM）- B 题</h3>
+                        <span class="award-badge honorable" data-i18n="award3.prize">Honorable Mention</span>
+                    </div>
+                    <p class="award-date">2025.02</p>
+                    <p class="award-desc" data-i18n="award3.desc">独立参加。针对"可持续旅游行业"议题，构建多目标决策模型（MCDM），引入模拟退火算法求解资源分配与环境保护的平衡解（MATLAB 求解）。建立了游客满意度、经济收益、生态保护三目标优化模型，通过层次分析法确定权重，运用模拟退火算法进行全局寻优。该竞赛为后续旅游业评价论文提供了初步的研究方向与方法启蒙。</p>
+                    <div class="award-files">
+                        <a href="info/competition/2508926.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.certificate">证书</span>
+                        </a>
+                        <a href="info/competition/2508926_article.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.paper">参赛论文</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="award4.title">2024 年亚太杯数学建模竞赛（APMCM）- C 题</h3>
+                        <span class="award-badge second-prize" data-i18n="award4.prize">二等奖</span>
+                    </div>
+                    <p class="award-date">2024.10</p>
+                    <p class="award-desc" data-i18n="award4.desc">独立参加。针对宠物行业规模进行预测，通过数据分析提出相关政策提议。采用时间序列分析（ARIMA 模型）和灰色预测模型（GM(1,1)）对宠物行业市场规模进行预测，构建多元回归模型分析宠物行业对 GDP、就业等经济指标的影响。</p>
+                    <div class="award-files">
+                        <a href="info/competition/24206362_1.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.certificate">证书</span>
+                        </a>
+                        <a href="info/competition/Capmcm24206362_article.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.paper">参赛论文</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="award5.title">MathorCup 高校数学建模挑战赛 - D 题</h3>
+                        <span class="award-badge third-prize" data-i18n="award5.prize">省级三等奖</span>
+                    </div>
+                    <p class="award-date">2025.04</p>
+                    <p class="award-desc" data-i18n="award5.desc">独立参加。选择声音降噪处理赛题，采用快速傅里叶变换（FFT）对音频信号进行频域分析，设计自适应滤波算法（LMS 算法）实现主动降噪，通过 MATLAB 进行音频处理与仿真。</p>
+                    <div class="award-files">
+                        <a href="info/competition/25001429_1.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.certificate">证书</span>
+                        </a>
+                        <a href="info/competition/Capmcm24206362_article.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.paper">参赛论文</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="award6.title">全国大学生计算机设计大赛</h3>
+                        <span class="award-badge third-prize" data-i18n="award6.prize">省级三等奖</span>
+                    </div>
+                    <p class="award-date">2026.03-06</p>
+                    <p class="award-desc" data-i18n="award6.desc">团队协作完成红色精神文旅网站搭建，采用 React+Node.js 技术栈，实现红色文化资源展示、旅游线路推荐、在线预约等功能模块。网站部署于阿里云服务器，支持高并发访问。</p>
+                    <div class="award-files">
+                        <a href="http://47.94.136.201:3001/" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            <span data-i18n="award.website">网站链接</span>
+                        </a>
+                        <a href="info/competition/2026计算机设计大赛名单.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.list">获奖名单</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="award7.title">2026 年美国大学生数学建模竞赛（MCM/ICM）- F 题</h3>
+                        <span class="award-badge participant" data-i18n="award7.prize">成功参赛</span>
+                    </div>
+                    <p class="award-date">2026.02</p>
+                    <p class="award-desc" data-i18n="award7.desc">独立完成。聚焦 AI 与教育建模，构建不同专业求职竞争力评价模型，完成 2026-2040 年 15 年动力系统演化预测。采用熵权-TOPSIS 方法确定各指标权重，对 10 个典型专业进行竞争力排序。建立系统动力学模型，模拟不同专业在未来 15 年的就业市场演化趋势。</p>
+                    <div class="award-files">
+                        <a href="info/competition/2627270.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.certificate">参赛证明</span>
+                        </a>
+                        <a href="info/competition/2627270_article.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="award.paper">参赛论文</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="award8.title">2024 年全国大学生创新创业大赛</h3>
+                        <span class="award-badge provincial" data-i18n="award8.prize">省级立项并结项</span>
+                    </div>
+                    <p class="award-date">2024.04 - 2025.05</p>
+                    <p class="award-desc" data-i18n="award8.desc">参与/主持两项大学生创新创业大赛乡村振兴赛道项目：1）乡村养老体系评价项目：采用熵权-TOPSIS 方法，构建包含基础设施、医疗服务、精神文化、经济保障等维度的乡村养老评价体系。2）乡村经济发展短期预测项目：基于灰色预测模型 GM(1,1)，对乡村经济收入进行短期预测。个人职责：负责访谈、报告撰写、建模与数据分析可视化。</p>
+                </div>
+
+                <!-- 专业证书 -->
+                <h3 class="section-subtitle" data-i18n="certificates.title">专业证书</h3>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="cert.ibm1.title">IBM 企业数据分析专业证书</h3>
+                    </div>
+                    <p class="award-desc" data-i18n="cert.ibm1.desc">完成 IBM 企业数据分析专业课程，掌握数据科学核心技能</p>
+                    <div class="award-files">
+                        <a href="info/honor_certificate/IBM_enterptise data science.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="viewCert">查看证书</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="cert.ibm2.title">IBM 机器学习专业证书</h3>
+                    </div>
+                    <p class="award-desc" data-i18n="cert.ibm2.desc">完成 IBM 机器学习专业课程，掌握机器学习算法与应用</p>
+                    <div class="award-files">
+                        <a href="info/honor_certificate/IBM_machine learning.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="viewCert">查看证书</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="cert.tencent.title">腾讯产品经理训练营</h3>
+                    </div>
+                    <p class="award-desc" data-i18n="cert.tencent.desc">完成腾讯产品经理训练营入门课程与进阶版课程</p>
+                    <div class="award-files">
+                        <a href="info/honor_certificate/腾讯产品经理训练营证书-入门课程.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="cert.basic">入门课程证书</span>
+                        </a>
+                        <a href="info/honor_certificate/腾讯产品经理训练营证书-进阶版课程.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="cert.advanced">进阶版课程证书</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="cert.dj.title">鼎捷校园全栈开发工程师</h3>
+                    </div>
+                    <p class="award-desc" data-i18n="cert.dj.desc">校园全栈开发工程师认证</p>
+                    <div class="award-files">
+                        <a href="info/honor_certificate/校园全栈开发工程师.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="viewCert">查看证书</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 荣誉称号 -->
+                <h3 class="section-subtitle" data-i18n="honors.title">荣誉称号</h3>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="honor.scholarship1.title">2023-2024 学年 东华大学校一等奖学金</h3>
+                        <span class="award-badge first-prize" data-i18n="honor.scholarship1.prize">一等奖学金</span>
+                    </div>
+                    <div class="award-files">
+                        <a href="info/honor_certificate/东华大学一等奖学金.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="viewCert">查看证书</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-header">
+                        <h3 data-i18n="honor.scholarship2.title">2024-2025 学年 东华大学天骥一等奖学金</h3>
+                        <span class="award-badge first-prize" data-i18n="honor.scholarship2.prize">天骥一等奖学金</span>
+                    </div>
+                    <div class="award-files">
+                        <a href="info/honor_certificate/2025社会奖一等.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="viewCert">查看证书</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 竞赛3 -->
-        <div class="card">
-            <h3 data-i18n="award3.title">2025年美国大学生数学建模竞赛（MCM/ICM）- B题</h3>
-            <p><span data-i18n="label.prize">奖项：</span><span data-i18n="award3.prize">Honorable Mention</span></p>
-            <p>2025.02</p>
-            <p class="desc" data-i18n="award3.desc">独立参加。针对“可持续旅游行业”议题，构建多目标决策模型（MCDM），引入模拟退火算法求解资源分配与环境保护的平衡解，为后续旅游业评价论文提供了初步的研究方向与方法启蒙。</p>
-            <div class="files">
-                <a href="info/2508926.pdf" target="_blank">Certificate</a>
+        <!-- 实习交换标签页 -->
+        <section id="experience" class="tab-content">
+            <div class="content-container">
+                <h2 class="section-title" data-i18n="experience.title">实习与国际交流</h2>
+                
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3 data-i18n="intern.vw">上海大众汽车有限公司</h3>
+                        <span class="experience-type" data-i18n="type.internship">实习</span>
+                    </div>
+                    <p class="experience-date" data-i18n="intern.vw.date">2025.07 - 2025.08（2 个月）| 上海</p>
+                    <div class="experience-details">
+                        <h4 data-i18n="intern.vw.work">工作内容：</h4>
+                        <ul class="work-list">
+                            <li data-i18n="intern.vw.work1"><strong>ESG 联动宣传项目</strong>：深度参与上汽大众与伊利牛奶 ESG 联动宣传项目，协助完成品牌可持续发展联合推广方案。</li>
+                            <li data-i18n="intern.vw.work2"><strong>舆情监测与分析</strong>：利用 Python 爬取微博、微信、抖音、小红书、知乎五大社交平台 <strong>400+</strong> 条评论数据，进行情感分析（基于 SnowNLP 库）与品牌形象差异调研，形成舆情分析报告。</li>
+                            <li data-i18n="intern.vw.work3"><strong>数据可视化看板</strong>：利用 Tableau 搭建传播热度可视化看板，实时监测 ESG 相关内容传播效果，包括曝光量、互动率、情感倾向等指标，支撑 ESG 传播决策。</li>
+                            <li data-i18n="intern.vw.work4"><strong>部门汇报</strong>：参与部门周会，汇报舆情监测结果与可视化分析结论，获得部门领导认可。</li>
+                        </ul>
+                    </div>
+                    <a href="info/internship_globalexchange/SVW2025.pdf" target="_blank" class="cert-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        <span data-i18n="viewCert">查看证明</span>
+                    </a>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3 data-i18n="intern.ox">牛津大学伍斯特学院暑期课程</h3>
+                        <span class="experience-type exchange" data-i18n="type.exchange">国际交流</span>
+                    </div>
+                    <p class="experience-date" data-i18n="intern.ox.date">2024.08 - 2024.09（4 周）| 英国牛津</p>
+                    <div class="experience-details">
+                        <h4 data-i18n="intern.ox.course">课程内容：</h4>
+                        <ul class="work-list">
+                            <li data-i18n="intern.ox.course1"><strong>商业管理</strong>：系统学习商业管理理论，包括战略规划、组织行为、运营管理等核心模块。</li>
+                            <li data-i18n="intern.ox.course2"><strong>数字营销</strong>：学习数字营销策略、社交媒体营销、SEO/SEM、内容营销等前沿知识。</li>
+                            <li data-i18n="intern.ox.course3"><strong>企业商业发展案例</strong>：研究全球知名企业商业发展案例，分析成功要素与失败教训。</li>
+                        </ul>
+                        <h4 data-i18n="intern.ox.report">实践汇报（4 次）：</h4>
+                        <ul class="work-list">
+                            <li data-i18n="intern.ox.report1">华为国际化战略分析</li>
+                            <li data-i18n="intern.ox.report2">小米生态链商业模式创新</li>
+                            <li data-i18n="intern.ox.report3">中国企业数字化转型案例</li>
+                            <li data-i18n="intern.ox.report4">跨文化管理策略比较</li>
+                        </ul>
+                    </div>
+                    <div class="experience-files">
+                        <a href="info/internship_globalexchange/OX.pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="viewCert">结业证书</span>
+                        </a>
+                        <a href="info/internship_globalexchange/240919_Transcript_QIYONGYANG20240920024453+(1).pdf" target="_blank" class="file-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <span data-i18n="viewTranscript">成绩单</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <!-- 竞赛4 -->
-        <div class="card">
-            <h3 data-i18n="award4.title">2024年亚太杯数学建模竞赛（APMCM）- C题</h3>
-            <p><span data-i18n="label.prize">奖项：</span><span data-i18n="award4.prize">二等奖</span></p>
-            <p>2024.10</p>
-            <p class="desc" data-i18n="award4.desc">独立参加。针对宠物行业规模进行预测，通过数据分析提出相关政策提议，以及研究宠物行业规模对于经济发展的影响，赛题属于政策建模。</p>
-            <div class="files">
-                <a href="info/24206362_1.pdf" target="_blank">Certificate</a>
-            </div>
-        </div>
-
-        <!-- 竞赛5 -->
-        <div class="card">
-            <h3 data-i18n="award5.title">MathorCup高校数学建模挑战赛 - D题</h3>
-            <p><span data-i18n="label.prize">奖项：</span><span data-i18n="award5.prize">省级三等奖</span></p>
-            <p>2025.04</p>
-            <p class="desc" data-i18n="award5.desc">独立参加。选择声音降噪处理的赛题，学习音频波段相关的知识，将音频文件波幅可视化，并在人工智能协助下设计降噪算法，学习相关知识完成赛题。</p>
-            <div class="files">
-                <a href="info/25001429_1.pdf" target="_blank">Certificate</a>
-            </div>
-        </div>
-
-        <!-- 竞赛6 -->
-        <div class="card">
-            <h3 data-i18n="award6.title">全国大学生计算机设计大赛</h3>
-            <p><span data-i18n="label.prize">奖项：</span><span data-i18n="award6.status">作品审核中</span></p>
-            <p>2026.03 - 2026.06</p>
-            <p class="desc" data-i18n="award6.desc">团队协作完成红色精神文旅网站搭建，覆盖前端、后端开发。网站：<a href="http://47.94.136.201:3001/" target="_blank">http://47.94.136.201:3001/</a></p>
-        </div>
-
-        <!-- 竞赛7 -->
-        <div class="card">
-            <h3 data-i18n="award7.title">2026年美国大学生数学建模竞赛（MCM/ICM）- F题</h3>
-            <p><span data-i18n="label.prize">奖项：</span><span data-i18n="award7.status">待公布</span></p>
-            <p>2026.02</p>
-            <p class="desc" data-i18n="award7.desc">独立完成。聚焦AI与教育建模，构建不同专业求职竞争力评价模型，完成2026-2040年15年动力系统演化预测。</p>
-        </div>
-
-        <!-- 竞赛8 -->
-        <div class="card">
-            <h3 data-i18n="award8.title">2024年全国大学生创新创业大赛</h3>
-            <p><span data-i18n="label.prize">奖项：</span><span data-i18n="award8.prize">省级立项并结项</span></p>
-            <p>2024.04 - 2025.05</p>
-            <p class="desc" data-i18n="award8.desc">参与/主持两项大学生创新创业大赛乡村振兴赛道项目，一项关于乡村养老体系评价（熵权-TOPSIS获取评价优劣性排序），另一项关于乡村经济发展短期预测模型（灰色预测，线下实地考察并设计调研访谈）。负责访谈、报告撰写、建模与数据分析可视化。</p>
-        </div>
-    </section>
-
-    <!-- 板块5：实习与交换 -->
-    <section id="intern" class="section">
-        <h2 data-i18n="intern.title">实习及交换</h2>
-        
-        <div class="card">
-            <h3 data-i18n="intern.vw">上海大众汽车有限公司（Shanghai-Volkswagen）</h3>
-            <p>2025.07 - 2025.08</p>
-            <p class="desc" data-i18n="intern.vw.desc">深度参与企业ESG品牌可持续建设项目，协助完成上汽大众与伊利牛奶ESG联动宣传。负责舆情监测，利用Python爬取五大社交平台400+评论进行情感分析与品牌形象差异调研，利用Tableau搭建传播热度可视化看板，支撑ESG传播决策。</p>
-            <a href="info/SVW2025.pdf" target="_blank" class="cert-link">📄 Internship Certificate</a>
-        </div>
-
-        <div class="card">
-            <h3 data-i18n="intern.ox">牛津大学伍斯特学院暑期课程（Worcester College, Ox.）</h3>
-            <p>2024.08 - 2024.09</p>
-            <p class="desc" data-i18n="intern.ox.desc">系统学习商业管理、数字营销与企业商业发展案例，结合华为、小米等中国企业完成4次商业实践案例汇报，提升跨文化学术与案例研究能力。</p>
-            <div class="files">
-                <a href="info/OX.jpg" target="_blank">🖼️ Certificate</a>
-                <a href="info/240919_Transcript_QIYONGYANG20240920024453+(1).pdf" target="_blank">📄 Transcript</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Qiyong Yang</p>
-    </footer>
+        </section>
+    </main>
 
     <script src="js/main.js"></script>
 </body>
